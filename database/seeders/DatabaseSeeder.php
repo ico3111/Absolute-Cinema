@@ -22,5 +22,10 @@ class DatabaseSeeder extends Seeder
             'created_at' => '2025-08-07 13:47:38',
             'updated_at' => '2025-08-07 13:47:38'
         ]);
+
+        $this->call([
+            CategoriaSeeder::class,
+            FilmeSeeder::class
+            ]);
     }
 }

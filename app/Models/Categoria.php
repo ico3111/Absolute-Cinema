@@ -12,4 +12,5 @@ class Categoria extends Model
     public function posts() : HasMany {
         return $this->hasMany(Filme::class);
     }
+
 }
