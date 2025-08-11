@@ -9,7 +9,7 @@ class Filme extends Model
 {
     protected $fillable = ['id_categoria', 'nome', 'sinopse', 'ano', 'imagem', 'trailer'];
 
-    public function category() : BelongsTo {
-        return $this->belongsTo(Categoria::class);
+    public function categoria(): BelongsTo {
+        return $this->belongsTo(Categoria::class, 'id_categoria');
     }
 }

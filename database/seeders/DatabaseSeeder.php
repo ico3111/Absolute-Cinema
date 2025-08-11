@@ -26,6 +26,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategoriaSeeder::class,
             FilmeSeeder::class
-            ]);
+        ]);
     }
 }

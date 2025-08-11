@@ -9,7 +9,7 @@ class Categoria extends Model
 {
     protected $fillable = ['nome'];
 
-    public function posts() : HasMany {
+    public function filmes() : HasMany {
         return $this->hasMany(Filme::class);
     }
 
