@@ -24,6 +24,8 @@
                         </div>
                         <br>
                         <x-primary-link href="{{ $filme->trailer }}"> Assistir ao Trailer</x-primary-link>
+                        <form action="{{ route('desejos.store') }}" method="post"></form>
+                        <x-primary-link href="{{  }}"> Adicionar à lista de desejos</x-primary-link>
                         </div>
                     </div>
                     

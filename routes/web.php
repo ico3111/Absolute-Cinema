@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\DesejosController;
 use App\Http\Controllers\FilmesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/desejos', [DesejosController::class, 'index'])->name('desejos');
+    Route::post('/desejos', [DesejosController::class, 'create'])->name('desejos.store');
+    Route::delete('/desejos', [DesejosController::class, 'destroy'])->name('desejos.destroy');
 });
 
 require __DIR__.'/auth.php';

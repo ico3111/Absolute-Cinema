@@ -3,12 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Desejos extends Model
 {
-    // protected $fillable = ['nome'];
+    protected $fillable = ['id_filme', 'id_user'];
 
-    // public function posts() : HasMany {
-    //     return $this->hasMany(Filme::class);
-    // }
+    public function filme() : BelongsTo {
+        return $this->belongsTo(Filme::class);
+    }
+
+    public function user() : BelongsTo {
+        return $this->belongsTo(User::class);
+    }
 }

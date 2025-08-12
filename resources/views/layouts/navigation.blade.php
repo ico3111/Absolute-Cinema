@@ -21,6 +21,13 @@
                         {{ __('Categorias') }}
                     </x-nav-link>
                 </div>
+                @if (Auth::user())
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('desejos')" :active="request()->routeIs('desejos')">
+                            {{ __('Lista de Desejos') }}
+                        </x-nav-link>
+                    </div>
+                @endif
                 @if (Auth::user() && Auth::user()->is_admin)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('admin')" :active="request()->routeIs('admin')">
