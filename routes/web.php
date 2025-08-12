@@ -25,7 +25,8 @@ Route::prefix('admin')->middleware(['auth', 'IsAdmin'])->group(function () {
     
     // Dashboard admin
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-    Route::delete('/admin/profile/{id}', [AdminController::class, 'destroyProfile'])->name('admin.profile.destroy');
+    Route::delete('/profile/{id}', [AdminController::class, 'destroyProfile'])->name('admin.profile.destroy');
+    Route::put('profile/promote/{id}', [AdminController::class, 'promoteProfile'])->name('admin.profile.promote');
 
     // Filmes
     Route::get('/filmes', [FilmesController::class, 'index'])->name('filmes.index');

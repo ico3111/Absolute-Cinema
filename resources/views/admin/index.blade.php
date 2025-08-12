@@ -108,7 +108,7 @@
                                 <th>Nome</th>
                                 <th>email</th>
                                 <th>isAdmin</th>
-                                <th>Ações</th>
+                                <th colspan="2">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -122,6 +122,13 @@
                                 </td>
                                 <td>
                                     {{ $usuario->is_admin ? 'sim' : 'não'}}
+                                </td>
+                                <td>
+                                    <form action="{{ route('admin.profile.promote', $usuario->id) }}" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit">{{ $usuario->is_admin ? 'rebaixar' : 'promover' }}</button>
+                                    </form>
                                 </td>
                                 <td>
                                     <form method="post" action="{{ route('admin.profile.destroy', Auth::user()->id) }}">

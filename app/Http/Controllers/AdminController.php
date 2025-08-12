@@ -25,4 +25,14 @@ class AdminController extends Controller
         $user->delete();
         return redirect()->route('admin');
     }
+
+    public function promoteProfile(string $id) {
+        $user = User::findOrFail($id);
+    
+        $user->update([
+            'is_admin' => !$user->is_admin
+        ]);
+
+        return redirect()->route('admin');
+    }
 }
