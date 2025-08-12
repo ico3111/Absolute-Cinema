@@ -63,7 +63,7 @@ class FilmeSeeder extends Seeder
             'nome' => 'O Enigma de Outro Mundo',
             'sinopse' => 'Na Antártida, um grupo isolado de cientistas norte-americanos encontra os restos congelados de um organismo alienígena. Quando a criatura assume a forma de um dos cachorros da base de pesquisas, os cientistas descobrem que ela pode simular a aparência de qualquer ser vivo. A equipe corre contra o tempo em uma batalha desesperada para destruir o extraterrestre antes que seja tarde demais.',
             'ano' => '1982',
-            'imagem' => 'https://m.media-amazon.com/images/M/MV5BYTA3NDU5MWEtNTk4Yy00ZDNkLThmZTQtMjU3ZGVhYzAyMzU4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
+            'imagem' => 'https://media.fstatic.com/LE8eGDlG4pN3_ygDfyfO9_uz3UY=/322x478/smart/filters:format(webp)/media/movies/covers/2019/09/add_por_funeste_Sh2q2q1.jpg',
             'trailer' => 'https://www.youtube.com/watch?v=zIYzgajZ5KU'
         ]);
 
