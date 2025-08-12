@@ -7,23 +7,23 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div style="background-color: #1f1f21"class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <div class="flex w-1/1 bg-gray-900 p-2 rounded m-2 items-center text-justify text-sm">
+                    <div class="flex w-1/1 p-2 rounded m-2 items-center text-justify text-sm text-top">
                         <div class="mr-2 min-w-20rem w-1/1 ">
-                            <img src="{{ $filme->imagem }}" alt="{{ $filme->nome }}" style="width: 60rem;">
+                            <img style="width: 60rem;" src="{{ str_starts_with($filme->imagem, "http://") || str_starts_with($filme->imagem, "https://") ? $filme->imagem : asset('storage/' . $filme->imagem) }}" alt="{{ $filme->titulo }}" >
                         </div>
-                        <div class="flex flex-col">
+                        <div class="">
                             <h3 class="font-bold text-6xl wrap">{{ $filme->nome}}</h3>
-                        <div class="tags p-1">
-                        <small class="border w-fit p-1/2 px-2 rounded-full">{{ $filme->categoria->nome }}</small>
-                        <small class="border w-fit p-1/2 px-2 rounded-full">{{ $filme->ano }}</small>
-                        </div>
-                        <div class="justified">
-                        <p class="max-w-max text-lg">{{ $filme->sinopse }}</p>
-                        </div>
-                        <br>
-                        <x-primary-link href="{{ $filme->trailer }}"> Assistir ao Trailer</x-primary-link>
+                                <div class="tags p-1">
+                                <small class="border w-fit p-1/2 px-2 rounded-full">{{ $filme->categoria->nome }}</small>
+                                <small class="border w-fit p-1/2 px-2 rounded-full">{{ $filme->ano }}</small>
+                                </div>
+                            <div>
+                            <p class="max-w-max text-lg">{{ $filme->sinopse }}</p>
+                            </div>
+                                <br>
+                            <x-primary-link href="{{ $filme->trailer }}"> Assistir ao Trailer</x-primary-link>
                         </div>
                     </div>
                     
