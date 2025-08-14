@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\DesejosController;
 use App\Http\Controllers\FilmesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,8 @@ Route::prefix('admin')->middleware(['auth', 'IsAdmin'])->group(function () {
     
     // Dashboard admin
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-    Route::delete('/admin/profile/{id}', [AdminController::class, 'destroyProfile'])->name('admin.profile.destroy');
+    Route::delete('/profile/{id}', [AdminController::class, 'destroyProfile'])->name('admin.profile.destroy');
+    Route::put('profile/promote/{id}', [AdminController::class, 'promoteProfile'])->name('admin.profile.promote');
 
     // Filmes
     Route::get('/filmes', [FilmesController::class, 'index'])->name('filmes.index');
@@ -50,6 +52,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/desejos', [DesejosController::class, 'index'])->name('desejos');
+    Route::post('/desejos', [DesejosController::class, 'store'])->name('desejos.store');
+    Route::delete('/desejos/{id}', [DesejosController::class, 'destroy'])->name('desejos.destroy');
 });
 
 require __DIR__.'/auth.php';

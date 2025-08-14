@@ -15,22 +15,19 @@
                         </div>
                         <div class="">
                             <h3 class="font-bold text-6xl wrap">{{ $filme->nome}}</h3>
-                                <div class="tags p-1">
+                            <div class="tags p-1">
                                 <small class="border w-fit p-1/2 px-2 rounded-full">{{ $filme->categoria->nome }}</small>
                                 <small class="border w-fit p-1/2 px-2 rounded-full">{{ $filme->ano }}</small>
-                                </div>
-                            <div>
-                            <p class="max-w-max text-lg">{{ $filme->sinopse }}</p>
                             </div>
-                                <br>
+                            <div>
+                                <p class="max-w-max text-lg">{{ $filme->sinopse }}</p>
+                            </div>
+                            <br>
                             <x-primary-link href="{{ $filme->trailer }}"> Assistir ao Trailer</x-primary-link>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
-
-<!-- <img src="{{ asset('storage/' . $filme->imagem) }}" alt="" height="50">
