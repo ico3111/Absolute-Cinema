@@ -9,24 +9,19 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    admin
+                    
+                    <div class="flex gap-2">
+                    <x-primary-link href="{{ route('filmes.create') }}"> + Filme </x-primary-link>
                     <br>
-                    <a href="{{ route('filmes.create') }}">
-                    <x-primary-button class="mt-5">
-                        + filme
-                    </x-primary-button>
-                    </a>
+                    <x-primary-link href="{{ route('categorias.create') }}"> + Categoria </x-primary-link>
+                    </div>
+                    
                     <br>
-                    <a href="{{ route('categorias.create') }}">
-                    <x-primary-button class="mt-5">
-                        + categoria
-                    </x-primary-button>
-                    </a>
-                    <br>
-                    filmes
-                    <table>
-                        <thead>
-                            <tr>
+
+                    <h3 class="text-xl font-bold">Filmes</h3>
+                    <table class="items-center justify-center">
+                        <thead class="items-center">
+                            <tr class="items-center">
                                 <th>Nome</th>
                                 <th>sinopse</th>
                                 <th>ano</th>
@@ -38,11 +33,11 @@
                         </thead>
                         <tbody>
                             @foreach ($filmes as $filme)
-                            <tr>
-                                <td>
+                            <tr class="text-center">
+                                <td class="font-bold">
                                     {{ $filme->nome }}
                                 </td>
-                                <td>
+                                <td class="overflow-hidden text-ellipsis w-1/2">
                                     {{ $filme->sinopse }}
                                 </td>
                                 <td>

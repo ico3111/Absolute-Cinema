@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg " style="background-color: #1f1f21;">
                 <div class="p-6 text-gray-900 dark:text-gray-100 justify-center">
                     <form action="{{ route('dashboard') }}" method="get" class="flex gap-2 justify-center items-center">
                         <x-text-input name="nome" placeholder="Nome do Filme" value="{{ request('nome') }}"/>
@@ -27,9 +27,9 @@
                     </form>
                 <div class="galeria flex flex-wrap mt-2 justify-center">
                     @foreach ($filmes as $filme)
-                    <div class="flex w-1/3 bg-gray-900 p-2 rounded m-2 items-center text-justify text-sm">
+                    <div class="flex w-1/3 p-4 rounded m-2 items-center text-justify text-sm" style="background-color:#0e0e0e">
                         <div class="mr-2 min-w-20rem w-1/1 ">
-                            <img src="{{ $filme->imagem }}" alt="{{ $filme->nome }}" style="width: 80rem">
+                        <img style="width:80rem; height:15rem" src="{{ str_starts_with($filme->imagem, "http://") || str_starts_with($filme->imagem, "https://") ? $filme->imagem : asset('storage/' . $filme->imagem) }}" alt="{{ $filme->titulo }}" >
                         </div>
                         <div class="flex flex-col">
                             <h3 class="font-bold text-xl wrap">{{ $filme->nome}}</h3>
