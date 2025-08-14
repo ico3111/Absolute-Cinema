@@ -18,7 +18,7 @@
                         <div>
                             <x-input-label for="nome" :value="__('Nome')" />
                             <x-text-input id="nome" class="block mt-1" type="text" name="nome" 
-                                :value="old('nome', $filme->nome)" required autofocus autocomplete="nome" />
+                                :value="old('nome', $categoria->nome)" required autofocus autocomplete="nome" />
                             <x-input-error :messages="$errors->get('nome')" class="mt-2" />
                         </div>
 

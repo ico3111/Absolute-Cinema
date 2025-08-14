@@ -96,10 +96,29 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
+                    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Filmes') }}
+                    </x-responsive-nav-link>
+                </div>
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('categorias')" :active="request()->routeIs('categorias')">
+                        {{ __('Categorias') }}
+                    </x-responsive-nav-link>
+                </div>
+                @if (Auth::user())
+                    <div class="pt-2 pb-3 space-y-1">
+                        <x-responsive-nav-link :href="route('desejos')" :active="request()->routeIs('desejos')">
+                            {{ __('Lista de Desejos') }}
+                        </x-responsive-nav-link>
+                    </div>
+                @endif
+                @if (Auth::user() && Auth::user()->is_admin)
+                    <div class="pt-2 pb-3 space-y-1">
+                        <x-responsive-nav-link :href="route('admin')" :active="request()->routeIs('admin')">
+                            {{ __('Administrador') }}
+                        </x-responsive-nav-link>
+                    </div>
+                @endif
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">

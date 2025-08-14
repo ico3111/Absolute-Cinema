@@ -24,6 +24,13 @@
                             </div>
                             <br>
                             <x-primary-link href="{{ $filme->trailer }}"> Assistir ao Trailer</x-primary-link>
+                            @if (Auth::user())
+                                <form action="{{ route('desejos.store') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id_filme" value="{{ $filme->id }}">
+                                    <x-primary-button class="mt-2" type="submit">Adicionar à lista de desejos</x-primary-button>
+                                </form>
+                            @endif
                         </div>
                     </div>
                 </div>

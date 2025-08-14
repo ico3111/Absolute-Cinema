@@ -11,7 +11,15 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100 flex flex-wrap justify-center">
                     @foreach ($categorias as $categoria)
                     <div style="background-color: #0e0e0e" class="p-8 m-2 rounded w-80 text-center">
-                        <p class="text-xl font-bold"a >{{ $categoria->nome}}</p> <br>
+                        <p class="text-xl font-bold">{{ $categoria->nome}}</p>
+                        @if (Auth::user() && Auth::user()->is_admin)
+                            <br>
+                            <form action="{{ route('categorias.destroy', $categoria->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')    
+                                <x-primary-button type="submit">Deletar</x-primary-button>
+                            </form>
+                        @endif
                     </div>
                     @endforeach
                 </div>
