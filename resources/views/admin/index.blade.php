@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-        <i class="fa-solid fa-user-tie"></i> &nbsp; Administrador
+        <h2 class="font-semibold text-xl text-white leading-tight">
+          <i class="fa-solid fa-user-tie"></i> &nbsp; Administrador
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div style="background-color: #1f1f21" class="overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+                <div class="p-6 text-white">
                     
                     <div class="flex gap-2">
                     <x-primary-link href="{{ route('filmes.create') }}"> + Filme </x-primary-link>
@@ -34,7 +34,7 @@
                         <tbody>
                             @foreach ($filmes as $filme)
                             <tr class="text-center border-b border-[#7C0B0B]">
-                                <td style="color:#7C0B0B "class="font-bold p-2 max-w-10 truncate">
+                                <td style="color:#f97b7b "class="font-bold p-2 max-w-10 truncate">
                                     {{ $filme->nome }}
                                 </td>
                                 <td class="line-clamp-2 text-ellipsis pt-2 font-justified m-auto">
@@ -126,6 +126,7 @@
                                     <form action="{{ route('admin.profile.promote', $usuario->id) }}" method="post">
                                         @csrf
                                         @method('PUT')
+
                                         <button type="submit">
                                             {!! $usuario->is_admin 
                                                 ? '<i class="fa-solid fa-arrow-down"></i> rebaixar' 
