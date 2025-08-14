@@ -12,7 +12,14 @@
                     Desejos
                     <ul>
                         @foreach ($desejos as $desejo)
-                        <li>{{ $desejo->filme->nome }}</li>
+                        <li>
+                            {{ $desejo->filme->nome }} | 
+                            <form action="{{ route('desejos.destroy', $desejo->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Retirar da lista</button>
+                            </form>
+                        </li>
                         @endforeach
                     </ul>
                 </div>

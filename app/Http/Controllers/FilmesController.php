@@ -14,6 +14,7 @@ class FilmesController extends Controller
     {
         $query = Filme::query();
 
+        if (!empty($_GET['nome'])) { $query->whereRaw('LOWER(nome) LIKE ?', ['%' . strtolower($_GET['nome']) . '%']); }
         if (!empty($_GET['categoria'])) { $query->where('id_categoria', $_GET['categoria']); }
         if (!empty($_GET['ano'])) { $query->where('ano', $_GET['ano']); }
 

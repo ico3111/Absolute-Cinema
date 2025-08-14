@@ -10,8 +10,10 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
                 <div class="p-6 text-gray-900 dark:text-gray-100 justify-center">
                     <form action="{{ route('dashboard') }}" method="get" class="flex gap-2 justify-center items-center">
-                        <x-text-input name="ano" placeholder="Ano" value="{{ request('ano') }}"/>
-                        
+                        <x-text-input name="nome" placeholder="Nome do Filme" value="{{ request('nome') }}"/>
+
+                        <x-text-input name="ano" type="number" placeholder="Ano" value="{{ request('ano') }}"/>
+        
                         <x-select name="categoria">
                             <option value="">{{ __("Todas") }}</option>
                             @foreach ($categorias as $categoria)

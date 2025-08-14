@@ -15,6 +15,6 @@ class Filme extends Model
     }
 
     public function desejos() : HasMany {
-        return $this->hasMany(Desejos::class);
+        return $this->hasMany(Desejos::class, 'id_filme');
     }
 }

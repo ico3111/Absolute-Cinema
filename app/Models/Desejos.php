@@ -10,7 +10,7 @@ class Desejos extends Model
     protected $fillable = ['id_filme', 'id_user'];
 
     public function filme() : BelongsTo {
-        return $this->belongsTo(Filme::class);
+        return $this->belongsTo(Filme::class, 'id_filme');
     }
 
     public function user() : BelongsTo {

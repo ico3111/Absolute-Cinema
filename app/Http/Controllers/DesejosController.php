@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class DesejosController extends Controller
 {
     public function index() {
-        $desejos = Desejos::with('filme')
-            ->where('id_user', Auth::id())
+        $desejos = Desejos::where('id_user', Auth::id())
+            ->with('filme')
             ->get();
     
         return view('desejos.index', [
@@ -20,11 +20,11 @@ class DesejosController extends Controller
 
     public function store(Request $request) {
         $validated = $request->validate([
-            'id_filme' => 'required|exists:filme,id'
+            'id_filme' => 'required|exists:filmes,id'
         ]);
         
         Desejos::create([
-            'id_filme' => $validated['nome'],
+            'id_filme' => $validated['id_filme'],
             'id_user' => Auth::user()->id
         ]);
 
