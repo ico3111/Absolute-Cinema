@@ -47,6 +47,34 @@
                         @endif
                         @endauth
                         </div>
+
+                        @auth
+                        @if(auth()->user()->is_admin == 1)
+                        <div class="acoes flex gap-2 justify-end">
+                            <x-primary-link href="{{ route('filmes.edit', $filme->id) }}">Editar</x-primary-link>
+                            <form action="{{ route('filmes.destroy', $filme->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <x-primary-button type="submit">Deletar</x-primary-button>
+                            </form>
+                        </div>
+                        @endif
+                        @endauth
+                        </div>
+
+                        @auth
+                        @if(auth()->user()->is_admin == 1)
+                        <div class="acoes flex gap-2 justify-end">
+                            <x-primary-link href="{{ route('filmes.edit', $filme->id) }}">Editar</x-primary-link>
+                            <form action="{{ route('filmes.destroy', $filme->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <x-primary-button type="submit">Deletar</x-primary-button>
+                            </form>
+                        </div>
+                        @endif
+                        @endauth
+                        </div>
                     </div>
                 </div>
             </div>
