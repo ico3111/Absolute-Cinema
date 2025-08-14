@@ -46,7 +46,7 @@
                                 <td>
                                     {{ $filme->categoria->nome }}
                                 </td>
-                                <td class=" m-auto justify-center align-center max-w-10">
+                                <td class="m-auto justify-center align-center max-w-10">
                                     <img style="width: full;" src="{{ str_starts_with($filme->imagem, "http://") || str_starts_with($filme->imagem, "https://") ? $filme->imagem : asset('storage/' . $filme->imagem) }}" alt="{{ $filme->titulo }}" >
                                 </td>
                                 <td class="px-5">
