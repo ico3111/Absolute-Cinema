@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div style="background-color: #1f1f21" class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div style="background-color: #1f1f21" class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     
                     <div class="flex gap-2">
@@ -21,101 +21,105 @@
                     <h3 class="text-xl font-bold">Filmes</h3>
                     <table class="items-center justify-center">
                         <thead class="items-center">
-                            <tr class="items-center">
-                                <th>Nome</th>
-                                <th>sinopse</th>
-                                <th>ano</th>
-                                <th>Categoria</th>
-                                <th>Imagem</th>
-                                <th>Trailer</th>
-                                <th colspan="2">Ações</th>
+                            <tr style="background-color:#7C0B0B"class="items-center">
+                                <th class=" p-2 px-16">Nome</th>
+                                <th>Sinopse</th>
+                                <th class="px-5">Ano</th>
+                                <th class="px-5">Categoria</th>
+                                <th class="px-3">Imagem</th>
+                                <th class="p-2">Trailer</th>
+                                <th colspan="2" class="border-l border-black">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($filmes as $filme)
-                            <tr class="text-center">
-                                <td class="font-bold">
+                            <tr class="text-center border-b border-[#7C0B0B]">
+                                <td style="color:#7C0B0B "class="font-bold p-2 max-w-10 truncate">
                                     {{ $filme->nome }}
                                 </td>
-                                <td class="overflow-hidden text-ellipsis w-1/2">
+                                <td class="line-clamp-2 text-ellipsis pt-2 font-justified m-auto">
                                     {{ $filme->sinopse }}
                                 </td>
-                                <td>
+                                <td class="p-2 px-5">
                                     {{ $filme->ano }}
                                 </td>
                                 <td>
                                     {{ $filme->categoria->nome }}
                                 </td>
-                                <td>
-                                    <img src="{{ asset('storage/' . $filme->imagem) }}" alt="{{ $filme->titulo }}" height="50px" width="50px">
+                                <td class=" m-auto justify-center align-center max-w-10">
+                                    <img style="width: full;" src="{{ str_starts_with($filme->imagem, "http://") || str_starts_with($filme->imagem, "https://") ? $filme->imagem : asset('storage/' . $filme->imagem) }}" alt="{{ $filme->titulo }}" >
                                 </td>
-                                <td>
+                                <td class="px-5">
                                     <a href="{{ $filme->trailer }}">Trailer</a>
                                 </td>
-                                <td>
-                                    <a href="{{ route('filmes.edit', $filme->id) }}">Edit</a>
+                                <td class="border-l border-[#7C0B0B] p-2 ">
+                                    <x-edit-link href="{{ route('filmes.edit', $filme->id) }}">Edit</x-edit-link>
                                 </td>
-                                <td>
+                                <td class="pr-2">
                                     <form action="{{ route('filmes.destroy', $filme->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit">Deletar</button>
+                                        <x-primary-button type="submit">Deletar</x-primary-button>
                                     </form>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <hr>
-                    categorias
-                    <table>
+                    <br>
+                    <div class="flex">
+                        <div class="categorias w-1/2 mr-8">
+                    <h3 class="text-xl font-bold">Categorias</h3>
+                    <table class="items-center justify-center w-full mr-5">
                         <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th colspan="2">Ações</th>
+                            <tr style="background-color:#7C0B0B"class="items-center">
+                                <th class=" p-2 px-16">Nome</th>
+                                <th colspan="2" class="border-l border-black">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($categorias as $categoria)
-                            <tr>
-                                <td>
+                            <tr class="text-center border-b border-[#7C0B0B]">
+                                <td style="color:#7C0B0B "class="font-bold p-2 max-w-10 truncate">
                                     {{ $categoria->nome }}
                                 </td>
-                                <td>
-                                    <a href="{{ route('categorias.edit', $categoria->id) }}">Edit</a>
+                                
+                                <td class="border-l border-[#7C0B0B]    ">
+                                    <x-edit-link href="{{ route('categorias.edit', $categoria->id) }}">Edit</x-edit-link>
                                 </td>
-                                <td>
+                                <td class="">
                                     <form action="{{ route('categorias.destroy', $categoria->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit">Deletar</button>
+                                        <x-primary-button type="submit">Deletar</x-primary-button>
                                     </form>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <hr>
-                    Usuários
-                    <table>
+                </div>
+                <div class="users w-1/2">
+                    <h3 class="text-xl font-bold">Usuários</h3>
+                    <table class="items-center justify-center w-full mr-5">
                         <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>email</th>
-                                <th>isAdmin</th>
-                                <th colspan="2">Ações</th>
+                            <tr style="background-color:#7C0B0B"class="items-center">
+                                <th class="p-2 px-12">Nome</th>
+                                <th class="p-2">email</th>
+                                <th class="p-2">isAdmin</th>
+                                <th colspan="2" class="border-l border-black">Ação</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($usuarios as $usuario)
-                            <tr>
-                                <td>
+                            <tr class="text-center border-b border-[#7C0B0B]">
+                                <td style="color:#7C0B0B "class="font-bold p-2 max-w-10 truncate">
                                     {{ $usuario->name }}
                                 </td>
-                                <td>
+                                <td class="p-2 px-5">
                                     {{ $usuario->email }}
                                 </td>
-                                <td>
+                                <td class="p-2 px-5">
                                     {{ $usuario->is_admin ? 'sim' : 'não'}}
                                 </td>
                                 <td>
@@ -129,13 +133,15 @@
                                     <form method="post" action="{{ route('admin.profile.destroy', Auth::user()->id) }}">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit">Delete</button>
+                                        <x-primary-button type="submit">Delete</x-primary-button>
                                     </form>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
