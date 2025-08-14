@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
-            Administrador
+          <i class="fa-solid fa-user-tie"></i> &nbsp; Administrador
         </h2>
     </x-slot>
 
@@ -53,13 +53,13 @@
                                     <a href="{{ $filme->trailer }}">Trailer</a>
                                 </td>
                                 <td class="border-l border-[#7C0B0B] p-2 ">
-                                    <x-edit-link href="{{ route('filmes.edit', $filme->id) }}">Edit</x-edit-link>
+                                    <x-edit-link href="{{ route('filmes.edit', $filme->id) }}"><i class="fa-solid fa-pencil"></i></x-edit-link>
                                 </td>
                                 <td class="pr-2">
                                     <form action="{{ route('filmes.destroy', $filme->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <x-primary-button type="submit">Deletar</x-primary-button>
+                                        <x-primary-button type="submit"><i class="fa-solid fa-trash"></i></x-primary-button>
                                     </form>
                                 </td>
                             </tr>
@@ -85,13 +85,13 @@
                                 </td>
                                 
                                 <td class="border-l border-[#7C0B0B]    ">
-                                    <x-edit-link href="{{ route('categorias.edit', $categoria->id) }}">Edit</x-edit-link>
+                                    <x-edit-link href="{{ route('categorias.edit', $categoria->id) }}"><i class="fa-solid fa-pencil"></i></x-edit-link>
                                 </td>
                                 <td class="">
                                     <form action="{{ route('categorias.destroy', $categoria->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <x-primary-button type="submit">Deletar</x-primary-button>
+                                        <x-primary-button type="submit"><i class="fa-solid fa-trash"></i></x-primary-button>
                                     </form>
                                 </td>
                             </tr>
@@ -106,7 +106,7 @@
                             <tr style="background-color:#7C0B0B"class="items-center">
                                 <th class="p-2 px-12">Nome</th>
                                 <th class="p-2">email</th>
-                                <th class="p-2">isAdmin</th>
+                                <th class="p-2">Administrador?</th>
                                 <th colspan="2" class="border-l border-black">Ação</th>
                             </tr>
                         </thead>
@@ -126,14 +126,19 @@
                                     <form action="{{ route('admin.profile.promote', $usuario->id) }}" method="post">
                                         @csrf
                                         @method('PUT')
-                                        <x-edit-link type="submit">{{ $usuario->is_admin ? 'rebaixar' : 'promover' }}</x-edit-link>
+
+                                        <button type="submit">
+                                            {!! $usuario->is_admin 
+                                                ? '<i class="fa-solid fa-arrow-down"></i> rebaixar' 
+                                                : '<i class="fa-solid fa-arrow-up"></i> promover' !!}
+                                        </button>
                                     </form>
                                 </td>
                                 <td>
                                     <form method="post" action="{{ route('admin.profile.destroy', Auth::user()->id) }}">
                                         @csrf
                                         @method('delete')
-                                        <x-primary-button type="submit">Delete</x-primary-button>
+                                        <x-primary-button type="submit"><i class="fa-solid fa-trash"></i></x-primary-button>
                                     </form>
                                 </td>
                             </tr>

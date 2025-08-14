@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
-            Filmes
+          <i class="fa-solid fa-film"></i> &nbsp; Filmes
         </h2>
     </x-slot>
 
@@ -25,27 +25,36 @@
 
                         <x-primary-button type="submit">Buscar</x-primary-button>
                     </form>
-                    <div class="galeria flex flex-wrap mt-2 justify-center">
+
+                    <div class="galeria flex flex-wrap mt-2 justify-center gap-2">
                         @foreach ($filmes as $filme)
-                        <div class="flex w-1/3 p-4 rounded m-2 items-center text-justify text-sm" style="background-color:#0e0e0e">
-                            <div class="mr-2 min-w-20rem w-1/1 ">
-                                <img style="width:80rem; height:15rem" src="{{ str_starts_with($filme->imagem, "http://") || str_starts_with($filme->imagem, "https://") ? $filme->imagem : asset('storage/' . $filme->imagem) }}" alt="{{ $filme->titulo }}" >
-                            </div>
-                            <div class="flex flex-col">
-                                <h3 class="font-bold text-xl wrap">{{ $filme->nome}}</h3>
-                                <div class="tags p-1">
+                            <a href="{{ route('filmes.show', $filme->id) }}"
+                            class="flex flex-col items-center bg-white border rounded-lg shadow-sm 
+                                    hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700
+                                    w-80 h-96 overflow-hidden"  style="background-color:#0e0e0e; border: 1px solid #7c0b0b;">
+                            
+                                <img class="object-cover w-full h-40"
+                                    src="{{ str_starts_with($filme->imagem, 'http://') || str_starts_with($filme->imagem, 'https://') 
+                                            ? $filme->imagem 
+                                            : asset('storage/' . $filme->imagem) }}"
+                                    alt="{{ $filme->titulo }}">
+
+                                <div class="flex flex-col p-4 leading-normal flex-1 overflow-hidden">
+                                    <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+                                        {{ $filme->nome }}
+                                    </h5>
+                                    <div class="tags p-1">
                                     <small class="border w-fit p-1/2 px-2 rounded-full">{{ $filme->categoria->nome }}</small>
                                     <small class="border w-fit p-1/2 px-2 rounded-full">{{ $filme->ano }}</small>
                                 </div>
-                                <div class="sinopse h-1/2 justified overflow-hidden text-ellipsis">
-                                    <p class="max-w-max" style="height:5rem;overflow: hidden; text-overflow:ellipsis;">{{ $filme->sinopse }}</p>...
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-2 text-ellipsis pt-2 font-justified m-auto">
+                                        {{ $filme->sinopse }}
+                                    </p>
                                 </div>
-                                <br>
-                                <x-primary-link href='{{ route("filmes.show", $filme->id) }}' >vizualização detalhada</x-primary-link> 
-                            </div>
-                        </div>
+                            </a>
                         @endforeach
                     </div>
+
                 </div>
             </div>
         </div>
